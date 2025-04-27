@@ -1,0 +1,2 @@
+//user model
+class User {}
