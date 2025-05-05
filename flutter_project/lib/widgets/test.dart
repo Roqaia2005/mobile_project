@@ -1,1 +1,0 @@
-//extract widget that is repeated many times or need to use it elsewhere and make it custom for clean code

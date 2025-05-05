@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_final_project/helper.dart';
-import 'package:mobile_final_project/views/home_view.dart';
 import 'package:mobile_final_project/cubit/login_cubit.dart';
 import 'package:mobile_final_project/views/signup_view.dart';
 import 'package:mobile_final_project/widgets/customButton.dart';
+import 'package:mobile_final_project/views/restuarant_view.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:mobile_final_project/widgets/customTextFormField.dart';
 
@@ -34,7 +34,7 @@ class _LoginViewState extends State<LoginView> {
           showSnackBar(context, "Successfully logged in");
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => HomeView()),
+            MaterialPageRoute(builder: (context) => RestuarantView()),
           );
         } else if (state is LoginFailure) {
           isLoading = false;
