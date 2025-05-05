@@ -29,11 +29,10 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  animated_text_kit: ^4.2.3
   bloc: ^9.0.0
-
   cupertino_icons: ^1.0.8
   dio: ^5.8.0+1
-
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.0
@@ -73,7 +72,5 @@ flutter:
     - family: Amaranth-Regular
       fonts:
         - asset: assets/fonts/Amaranth-Regular.ttf
-
-  #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
