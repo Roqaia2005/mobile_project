@@ -12,7 +12,7 @@ class SearchingBody extends StatelessWidget {
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: [Image(image: AssetImage("assets/images/searching/gif"))],
+            children: [Image(image: AssetImage("assets/images/searching.gif"))],
           ),
         ),
       ),

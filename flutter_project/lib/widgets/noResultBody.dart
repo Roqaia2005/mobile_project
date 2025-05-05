@@ -15,6 +15,14 @@ class NoResultBody extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
+                'Oops!',
+                style: TextStyle(
+                  fontSize: 35,
+                  color: Colors.white,
+                  fontFamily: "Amaranth-Regular",
+                ),
+              ),
+              Text(
                 'No Result found for this product , try another one',
                 style: TextStyle(
                   fontSize: 30,
