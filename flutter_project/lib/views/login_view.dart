@@ -34,7 +34,7 @@ class _LoginViewState extends State<LoginView> {
           showSnackBar(context, "Successfully logged in");
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => RestuarantView()),
+            MaterialPageRoute(builder: (context) => RestaurantView()),
           );
         } else if (state is LoginFailure) {
           isLoading = false;

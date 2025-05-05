@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_final_project/views/login_view.dart';
 import 'package:mobile_final_project/models/restuarant.dart';
 import 'package:mobile_final_project/views/search_view.dart';
 import 'package:mobile_final_project/widgets/RestaurantItem.dart';
 
-class RestuarantView extends StatelessWidget {
-  RestuarantView({super.key});
+class RestaurantView extends StatelessWidget {
+  RestaurantView({super.key});
   List<Restaurant> allRestaurants = [
     Restaurant("test", "test"),
     Restaurant("test", "test"),
@@ -18,6 +19,14 @@ class RestuarantView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xff2B3C60),
       appBar: AppBar(
+        leading: IconButton(
+          onPressed:
+              () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LoginView()),
+              ),
+          icon: Icon(Icons.logout, color: Colors.white),
+        ),
         title: Text(
           "All restaurants",
           style: TextStyle(
