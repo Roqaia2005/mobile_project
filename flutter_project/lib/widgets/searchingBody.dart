@@ -5,12 +5,15 @@ class SearchingBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [Image(image: AssetImage("assets/images/searching/gif"))],
+    return Scaffold(
+      backgroundColor: Color(0xff576CD6),
+      body: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [Image(image: AssetImage("assets/images/searching/gif"))],
+          ),
         ),
       ),
     );
