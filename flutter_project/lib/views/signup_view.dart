@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_final_project/helper.dart';
+import 'package:mobile_final_project/views/home_view.dart';
 import 'package:mobile_final_project/views/login_view.dart';
 import 'package:mobile_final_project/cubit/signup_cubit.dart';
 import 'package:mobile_final_project/widgets/customButton.dart';
@@ -48,15 +49,30 @@ class _SignUpViewState extends State<SignUpView> {
         return ModalProgressHUD(
           inAsyncCall: isLoading,
           child: Scaffold(
+            extendBodyBehindAppBar: true,
+
             backgroundColor: Color(0xff576CD6),
+            appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              leading: IconButton(
+                icon: Icon(Icons.home, color: Colors.white),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return HomeView();
+                      },
+                    ),
+                  );
+                },
+              ),
+            ),
             body: Form(
               key: formKey,
               child: ListView(
                 children: [
-                  // CircleAvatar(
-                  //   radius: 50,
-                  //   child: Image(image: AssetImage('assets/images/shop.gif')),
-                  // ),
                   Image(
                     image: AssetImage('assets/images/shop.gif'),
                     height: 80,

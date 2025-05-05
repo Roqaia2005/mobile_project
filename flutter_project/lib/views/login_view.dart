@@ -48,6 +48,7 @@ class _LoginViewState extends State<LoginView> {
             inAsyncCall: isLoading,
             child: Scaffold(
               backgroundColor: Color(0xff576CD6),
+
               body: Form(
                 key: formKey,
                 child: ListView(

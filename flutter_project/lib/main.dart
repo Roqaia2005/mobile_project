@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-
-import 'package:mobile_final_project/views/login_view.dart';
+import 'package:mobile_final_project/views/home_view.dart';
 import 'package:mobile_final_project/cubit/login_cubit.dart';
 import 'package:mobile_final_project/cubit/signup_cubit.dart';
 
-Future<void> main() async {
 
+Future<void> main() async {
   runApp(const MyApp());
 }
 
@@ -22,7 +20,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<LoginCubit>(create: (context) => LoginCubit()),
         BlocProvider<SignupCubit>(create: (context) => SignupCubit()),
       ],
-      child: MaterialApp(debugShowCheckedModeBanner: false, home: LoginView()),
+      child: MaterialApp(debugShowCheckedModeBanner: false, home: HomeView()),
     );
   }
 }
