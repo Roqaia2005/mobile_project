@@ -50,20 +50,33 @@ class _SearchViewState extends State<SearchView> {
               ),
             ),
             child: SingleChildScrollView(
-              padding: const EdgeInsets.all(32),
+              // padding: const EdgeInsets.all(32),
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    AnimatedContainer(
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeInOut,
-                      child: Image.asset(
-                        "assets/images/search.png",
-                        width: 200,
-                        height: 200,
+                    Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/search.png'),
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(500),
+                          bottomRight: Radius.circular(500),
+                        ),
                       ),
+                      height: 230,
+                      width: double.infinity,
                     ),
+                    // AnimatedContainer(
+                    //   duration: const Duration(milliseconds: 500),
+                    //   curve: Curves.easeInOut,
+                    //   child: Image.asset(
+                    //     width: 200,
+                    //     height: 200,
+                    //   ),
+                    // ),
                     const SizedBox(height: 20),
 
                     const Text(
@@ -78,33 +91,37 @@ class _SearchViewState extends State<SearchView> {
                     ),
                     const SizedBox(height: 25),
 
-                    TextField(
-                      controller: _controller,
-                      onSubmitted: (_) => _handleSearch(),
-                      style: const TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white10,
-                        contentPadding: const EdgeInsets.symmetric(
-                          vertical: 20,
-                          horizontal: 16,
+                    Padding(
+                      padding: const EdgeInsets.all(32),
+
+                      child: TextField(
+                        controller: _controller,
+                        onSubmitted: (_) => _handleSearch(),
+                        style: const TextStyle(color: Colors.white),
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white10,
+                          contentPadding: const EdgeInsets.symmetric(
+                            vertical: 20,
+                            horizontal: 16,
+                          ),
+                          suffixIcon: IconButton(
+                            icon: const Icon(Icons.search, color: Colors.white),
+                            onPressed: _handleSearch,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(color: Colors.white),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(color: Colors.white54),
+                          ),
+                          hintText: "What are you looking for?",
+                          hintStyle: const TextStyle(color: Color(0xffBFD3F2)),
+                          labelText: "Search",
+                          labelStyle: const TextStyle(color: Colors.white),
                         ),
-                        suffixIcon: IconButton(
-                          icon: const Icon(Icons.search, color: Colors.white),
-                          onPressed: _handleSearch,
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: const BorderSide(color: Colors.white),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: const BorderSide(color: Colors.white54),
-                        ),
-                        hintText: "What are you looking for?",
-                        hintStyle: const TextStyle(color: Color(0xffBFD3F2)),
-                        labelText: "Search",
-                        labelStyle: const TextStyle(color: Colors.white),
                       ),
                     ),
 

@@ -25,10 +25,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<SignupCubit>(create: (context) => SignupCubit()),
         BlocProvider<SearchCubit>(create: (context) => SearchCubit()),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: HomeView(),
-      ),
+      child: MaterialApp(debugShowCheckedModeBanner: false, home: HomeView()),
     );
   }
 }
