@@ -24,4 +24,23 @@ class RestaurantService {
       rethrow;
     }
   }
+
+  Future<List<Restaurant>> getRestaurantsByProductId(int id) async {
+    try {
+      final response = await dio.get("$baseUrl/$id/getProductStores");
+
+      if (response.statusCode == 200) {
+        List<Restaurant> restaurants =
+            response.data
+                .map<Restaurant>((json) => Restaurant.fromJson(json))
+                .toList();
+
+        return restaurants;
+      } else {
+        throw Exception("Failed to load restaurants");
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
