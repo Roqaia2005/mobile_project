@@ -1,5 +1,7 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:mobile_final_project/core/utils/assets_data.dart';
 import 'package:mobile_final_project/core/widgets/back_arrow_icon_button.dart';
 import 'package:mobile_final_project/core/widgets/custom_app_bar.dart';
@@ -7,7 +9,9 @@ import 'package:mobile_final_project/core/widgets/grid_view_products.dart';
 import 'package:mobile_final_project/features/search/view_model/cubits/search_cubit/search_cubit.dart';
 
 class SearchingBody extends StatelessWidget {
-  const SearchingBody({super.key});
+  const SearchingBody({super.key, required this.query});
+
+  final String query;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +34,7 @@ class SearchingBody extends StatelessWidget {
           final filteredProducts = state.filteredProducts;
           return Scaffold(
             appBar: CustomAppBar(
-              title: 'Search',
+              title: 'Search for \"$query\"',
               leading: BackArrowIconButton(),
               isSearch: true,
             ),
