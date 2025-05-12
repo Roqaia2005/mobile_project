@@ -6,11 +6,11 @@ A cross-platform mobile application for discovering nearby restaurants and café
 
 | Register | Login | Restaurant Page |
 |---|---|---|
-| ![](./assets/screenshots/register.jpg) | ![](./screenshots/login.jpg) | ![](./screenshots/restaurant_page.jpg) |
+| ![](./assets/screenshots/register.jpg) | ![](./assets/screenshots/login.jpg) | ![](./assets/screenshots/restaurant_page.jpg) |
 
 | Search Input | Search Results | Product Provider |
 |---|---|---|
-| ![](./screenshots/search_input.jpg) | ![](./screenshots/search_results.jpg) | ![](./screenshots/product_provider.jpg) |
+| ![](./assets/screenshots/search_input.jpg) | ![](./assets/screenshots/search_results.jpg) | ![](./assets/screenshots/product_provider.jpg) |
 
 ## 🚀 Features
 
