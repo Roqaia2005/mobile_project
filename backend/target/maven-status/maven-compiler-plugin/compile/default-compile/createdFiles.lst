@@ -9,12 +9,14 @@ org\example\project_app_backend\DataIntializer.class
 org\example\project_app_backend\Services\CustomerService.class
 org\example\project_app_backend\Repository\CustomerRepo.class
 org\example\project_app_backend\DTO\StoreDTO.class
+org\example\project_app_backend\SecurityConfig.class
 org\example\project_app_backend\Entity\Store.class
 org\example\project_app_backend\Services\StoreService.class
 org\example\project_app_backend\DTO\CustomerDTO.class
 org\example\project_app_backend\Repository\StoreRepo.class
 org\example\project_app_backend\Controller\StoreController.class
 org\example\project_app_backend\Controller\ProductController.class
+org\example\project_app_backend\Services\EmailService.class
 org\example\project_app_backend\Entity\Product.class
 org\example\project_app_backend\Controller\CustomerController.class
 org\example\project_app_backend\Entity\ImageData.class
