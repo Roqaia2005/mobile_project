@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobile_final_project/core/utils/assets_data.dart';
 import 'package:mobile_final_project/helper.dart';
-import 'package:mobile_final_project/features/auth/view_model/cubits/login_cubit/login_cubit.dart';
-import 'package:mobile_final_project/features/auth/presentation/views/signup_view.dart';
-import 'package:mobile_final_project/core/widgets/customButton.dart';
-import 'package:mobile_final_project/features/home/presentation/views/restuarant_view.dart';
+import 'package:mobile_final_project/core/colors.dart';
+import 'package:mobile_final_project/core/utils/assets_data.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:mobile_final_project/core/widgets/customButton.dart';
+import 'package:mobile_final_project/features/auth/presentation/views/signup_view.dart';
+import 'package:mobile_final_project/features/home/presentation/views/restuarant_view.dart';
 import 'package:mobile_final_project/features/auth/presentation/widgets/customTextFormField.dart';
+import 'package:mobile_final_project/features/auth/view_model/cubits/login_cubit/login_cubit.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -48,7 +49,7 @@ class _LoginViewState extends State<LoginView> {
           (context, state) => ModalProgressHUD(
             inAsyncCall: isLoading,
             child: Scaffold(
-              backgroundColor: Color(0xff576CD6),
+              backgroundColor: AppColors.primaryColor,
 
               body: Form(
                 key: formKey,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_final_project/core/colors.dart';
 import 'package:mobile_final_project/features/auth/presentation/views/login_view.dart';
 import 'package:mobile_final_project/features/search/presentation/views/search_view.dart';
-
 
 class DistanceView extends StatelessWidget {
   final String restaurantName = "Café Bliss"; // Example restaurant name
@@ -27,7 +27,7 @@ class DistanceView extends StatelessWidget {
             fontFamily: "Amaranth-Regular",
           ),
         ),
-        backgroundColor: Color(0xff576CD6),
+        backgroundColor: AppColors.primaryColor,
         actions: [
           IconButton(
             icon: Icon(Icons.search, color: Colors.white),
@@ -84,7 +84,7 @@ class DistanceView extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xff2B3C60),
+                      color: AppColors.secondaryColor,
                     ),
                   ),
                   SizedBox(height: 10),
@@ -101,7 +101,7 @@ class DistanceView extends StatelessWidget {
                       style: TextStyle(color: Colors.white),
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xff576CD6),
+                      backgroundColor: AppColors.primaryColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),

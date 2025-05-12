@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_final_project/core/colors.dart';
+import 'package:searchbar_animation/const/colours.dart';
 import 'package:mobile_final_project/core/widgets/customButton.dart';
 import 'package:mobile_final_project/features/auth/presentation/views/login_view.dart';
 import 'package:mobile_final_project/features/auth/presentation/views/signup_view.dart';
@@ -17,7 +19,7 @@ class HomeView extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomCenter,
-            colors: [Color(0xff576CD6), Color(0xff2B3C60)],
+            colors: [AppColors.primaryColor,AppColors.secondaryColor],
           ),
         ),
 

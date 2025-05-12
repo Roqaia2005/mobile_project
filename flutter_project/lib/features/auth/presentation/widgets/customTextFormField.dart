@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_final_project/core/colors.dart';
 
 class CustomTextFormField extends StatefulWidget {
   CustomTextFormField({
@@ -52,9 +53,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             decoration: InputDecoration(
               fillColor: Colors.transparent,
               contentPadding: EdgeInsets.zero,
-              prefixIcon: Icon(widget.icon, color: Color(0xff527DBC)),
+              prefixIcon: Icon(widget.icon, color: AppColors.iconColor),
               hintText: widget.hintText,
-              hintStyle: const TextStyle(color: Color(0xff708FCB)),
+              hintStyle: const TextStyle(color: AppColors.hintColor),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
@@ -67,7 +68,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                           });
                         },
                         icon: Icon(
-                          color: Color(0xff527DBC),
+                          color: AppColors.iconColor,
 
                           obscureText ? Icons.visibility_off : Icons.visibility,
                         ),

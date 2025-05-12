@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile_final_project/core/colors.dart';
 import 'package:mobile_final_project/core/utils/assets_data.dart';
-import 'package:mobile_final_project/features/search/view_model/cubits/search_cubit/search_cubit.dart';
 import 'package:mobile_final_project/features/search/presentation/widgets/noResultBody.dart';
 import 'package:mobile_final_project/features/search/presentation/widgets/searchingBody.dart';
+import 'package:mobile_final_project/features/search/view_model/cubits/search_cubit/search_cubit.dart';
 
 class SearchView extends StatefulWidget {
   const SearchView({Key? key}) : super(key: key);
@@ -45,7 +46,7 @@ class _SearchViewState extends State<SearchView> {
             height: double.infinity,
             decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: [Color(0xff576CD6), Color(0xff2B3C60)],
+                colors: [AppColors.primaryColor, AppColors.secondaryColor],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_final_project/features/home/data/models/restaurant.dart';
-import 'package:mobile_final_project/core/widgets/back_arrow_icon_button.dart';
+import 'package:mobile_final_project/core/colors.dart';
 import 'package:mobile_final_project/core/widgets/custom_app_bar.dart';
+import 'package:mobile_final_project/core/widgets/back_arrow_icon_button.dart';
+import 'package:mobile_final_project/features/home/data/models/restaurant.dart';
 
 class RestaurantProducts extends StatelessWidget {
   const RestaurantProducts({super.key, required this.restaurant});
@@ -11,7 +12,7 @@ class RestaurantProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff2B3C60),
+      backgroundColor:  AppColors.primaryColor,
       appBar: CustomAppBar(
         leading: const BackArrowIconButton(),
         title: restaurant.name!,
@@ -139,7 +140,7 @@ class RestaurantProducts extends StatelessWidget {
                             fontFamily: 'Amaranth-Regular',
                             fontSize: 13,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xFF576CD6), // Project primary blue
+                            color: AppColors.primaryColor, // Project primary blue
                           ),
                         ),
                       ),

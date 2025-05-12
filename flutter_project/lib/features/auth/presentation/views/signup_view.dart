@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobile_final_project/core/utils/assets_data.dart';
 import 'package:mobile_final_project/helper.dart';
+import 'package:mobile_final_project/core/colors.dart';
+import 'package:mobile_final_project/core/utils/assets_data.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:mobile_final_project/core/widgets/customButton.dart';
 import 'package:mobile_final_project/features/auth/presentation/views/home_view.dart';
 import 'package:mobile_final_project/features/auth/presentation/views/login_view.dart';
-import 'package:mobile_final_project/features/auth/view_model/cubits/signup_cubit/signup_cubit.dart';
-import 'package:mobile_final_project/core/widgets/customButton.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:mobile_final_project/features/auth/presentation/widgets/customTextFormField.dart';
+import 'package:mobile_final_project/features/auth/view_model/cubits/signup_cubit/signup_cubit.dart';
 
 class SignUpView extends StatefulWidget {
   const SignUpView({super.key});
@@ -52,7 +53,7 @@ class _SignUpViewState extends State<SignUpView> {
           child: Scaffold(
             extendBodyBehindAppBar: true,
 
-            backgroundColor: Color(0xff576CD6),
+            backgroundColor: AppColors.primaryColor,
             appBar: AppBar(
               backgroundColor: Colors.transparent,
               elevation: 0,
@@ -243,7 +244,7 @@ class _SignUpViewState extends State<SignUpView> {
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
           filled: true,
           fillColor: const Color(0xFF9DAAE8),
-          labelStyle: const TextStyle(color: Color(0xff2B3C60)),
+          labelStyle: const TextStyle(color: AppColors.secondaryColor),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
             borderSide: const BorderSide(color: Color(0xFF9DAAE8)),

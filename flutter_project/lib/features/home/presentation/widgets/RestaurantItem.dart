@@ -1,8 +1,9 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
+import 'package:mobile_final_project/core/colors.dart';
 import 'package:mobile_final_project/features/home/presentation/views/restaurant_products_view.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+
 
 class RestaurantItem extends StatelessWidget {
   const RestaurantItem({
@@ -59,7 +60,7 @@ class RestaurantItem extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xff2B3C60),
+                      color: AppColors.secondaryColor,
                     ),
                   ),
                   const SizedBox(height: 4),
