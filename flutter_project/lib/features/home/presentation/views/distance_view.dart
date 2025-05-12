@@ -5,7 +5,9 @@ import 'package:mobile_final_project/features/search/presentation/views/search_v
 
 class DistanceView extends StatelessWidget {
   final String restaurantName = "Café Bliss"; // Example restaurant name
-  final double distance = 2.4; // in kilometers
+  final double distance = 2.4;
+
+  const DistanceView({super.key}); // in kilometers
 
   @override
   Widget build(BuildContext context) {

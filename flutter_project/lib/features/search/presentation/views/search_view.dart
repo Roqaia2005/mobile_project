@@ -2,27 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_final_project/core/colors.dart';
 import 'package:mobile_final_project/core/utils/assets_data.dart';
+import 'package:mobile_final_project/features/home/view_model/cubits/restaurant_cubit/restaurant_cubit.dart';
 import 'package:mobile_final_project/features/search/presentation/widgets/noResultBody.dart';
 import 'package:mobile_final_project/features/search/presentation/widgets/searchingBody.dart';
 import 'package:mobile_final_project/features/search/view_model/cubits/search_cubit/search_cubit.dart';
 
-class SearchView extends StatefulWidget {
-  const SearchView({Key? key}) : super(key: key);
-
-  @override
-  State<SearchView> createState() => _SearchViewState();
-}
-
-class _SearchViewState extends State<SearchView> {
+class SearchView extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
 
-  void _handleSearch() {
-    if (_controller.text.trim().isNotEmpty) {
-      final getResult = BlocProvider.of<SearchCubit>(context);
-      getResult.getResult();
-      Navigator.pop(context);
-    }
-  }
+  SearchView({super.key});
+
+  // void _handleSearch() {
+  //   if (_controller.text.trim().isNotEmpty) {
+  //     final getResult = BlocProvider.of<SearchCubit>(context);
+  //     getResult.getResult();
+  //     Navigator.pop(context);
+  //   }
+  // }
+
+  String query = "";
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +29,7 @@ class _SearchViewState extends State<SearchView> {
         if (state is SearchLoading) {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (_) => const SearchingBody()),
+            MaterialPageRoute(builder: (_) => SearchingBody(query: query)),
           );
         } else if (state is SearchFailure) {
           Navigator.push(
@@ -98,7 +96,19 @@ class _SearchViewState extends State<SearchView> {
 
                       child: TextField(
                         controller: _controller,
-                        onSubmitted: (_) => _handleSearch(),
+                        onSubmitted: (value) {
+                          query = value;
+                          if (query.isNotEmpty) {
+                            final filteredProducts =
+                                BlocProvider.of<RestaurantCubit>(
+                                  context,
+                                ).filteredProducts;
+
+                            BlocProvider.of<SearchCubit>(
+                              context,
+                            ).getResult(query, filteredProducts);
+                          }
+                        },
                         style: const TextStyle(color: Colors.white),
                         decoration: InputDecoration(
                           filled: true,
@@ -109,7 +119,7 @@ class _SearchViewState extends State<SearchView> {
                           ),
                           suffixIcon: IconButton(
                             icon: const Icon(Icons.search, color: Colors.white),
-                            onPressed: _handleSearch,
+                            onPressed: () {}, // handleSearch(),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
@@ -124,6 +134,9 @@ class _SearchViewState extends State<SearchView> {
                           labelText: "Search",
                           labelStyle: const TextStyle(color: Colors.white),
                         ),
+                        // onChanged: (value) {
+
+                        // },
                       ),
                     ),
 

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-class Products {
+class Product {
   int? productId;
   String? name;
   double? price;
@@ -9,7 +9,7 @@ class Products {
   String? description;
   Uint8List? imageData;
 
-  Products({
+  Product({
     this.productId,
     this.name,
     this.price,
@@ -18,7 +18,7 @@ class Products {
     this.imageData,
   });
 
-  Products.fromJson(Map<String, dynamic> json) {
+  Product.fromJson(Map<String, dynamic> json) {
     productId = json['productId'];
     name = json['name'];
     price = json['price']?.toDouble();

@@ -25,7 +25,7 @@ public class StoreController {
         return storeService.getAllStores();
     }
 
-    @GetMapping("/{storeId}/{productId}/getProductStores")
+    @GetMapping("/{productId}/getProductStores")
     public List<Store> getAllProductStores(@PathVariable Long productId){
         return storeService.getAllProductStores(productId);
     }
