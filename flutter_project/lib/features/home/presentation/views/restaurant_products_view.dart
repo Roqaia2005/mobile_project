@@ -1,7 +1,11 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:mobile_final_project/core/colors.dart';
-import 'package:mobile_final_project/core/widgets/custom_app_bar.dart';
 import 'package:mobile_final_project/core/widgets/back_arrow_icon_button.dart';
+import 'package:mobile_final_project/core/widgets/custom_app_bar.dart';
+import 'package:mobile_final_project/core/widgets/grid_view_products.dart';
+import 'package:mobile_final_project/features/home/data/models/product.dart';
 import 'package:mobile_final_project/features/home/data/models/restaurant.dart';
 
 class RestaurantProducts extends StatelessWidget {
@@ -12,10 +16,11 @@ class RestaurantProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  AppColors.primaryColor,
+      backgroundColor: AppColors.primaryColor,
       appBar: CustomAppBar(
         leading: const BackArrowIconButton(),
         title: restaurant.name!,
+        isSearch: false,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
@@ -73,82 +78,7 @@ class RestaurantProducts extends StatelessWidget {
             ),
             const SizedBox(height: 12),
 
-            // Replace the list below with real product data
-            GridView.builder(
-              itemCount: restaurant.products!.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                childAspectRatio: 0.88,
-              ),
-
-              shrinkWrap: true,
-
-              physics: NeverScrollableScrollPhysics(),
-              itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFF9F9FB),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  padding: const EdgeInsets.all(8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Product Image
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.memory(
-                          restaurant.products![index].imageData!,
-                          height: 100,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-
-                      Text(
-                        restaurant.products![index].name.toString(),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontFamily: 'Amaranth-Regular',
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Expanded(
-                        child: Text(
-                          restaurant.products![index].description.toString(),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            fontFamily: 'Amaranth-Regular',
-                            fontSize: 12,
-                            color: Colors.black54,
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: Text(
-                          '\$${restaurant.products![index].price.toString()}',
-                          style: const TextStyle(
-                            fontFamily: 'Amaranth-Regular',
-                            fontSize: 13,
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.primaryColor, // Project primary blue
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              },
-            ),
+            GridViewProducts(products: restaurant.products!),
           ],
         ),
       ),

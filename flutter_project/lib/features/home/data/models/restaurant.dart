@@ -13,7 +13,7 @@ class Restaurant {
   String? address;
   String? description;
   Uint8List? imageData;
-  List<Products>? products;
+  List<Product>? products;
 
   Restaurant({
     this.storeId,
@@ -44,7 +44,7 @@ class Restaurant {
     if (json['products'] != null) {
       products =
           (json['products'] as List)
-              .map((productJson) => Products.fromJson(productJson))
+              .map((productJson) => Product.fromJson(productJson))
               .toList();
     }
   }

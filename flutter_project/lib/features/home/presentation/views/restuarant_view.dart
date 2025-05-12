@@ -4,9 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:mobile_final_project/features/home/view_model/cubits/restaurant_cubit/restaurant_cubit.dart';
 import 'package:mobile_final_project/features/home/data/models/restaurant.dart';
-import 'package:mobile_final_project/features/auth/presentation/views/login_view.dart';
 import 'package:mobile_final_project/features/home/presentation/views/restaurant_products_view.dart';
-import 'package:mobile_final_project/features/search/presentation/views/search_view.dart';
 import 'package:mobile_final_project/features/home/presentation/widgets/RestaurantItem.dart';
 import 'package:mobile_final_project/core/widgets/custom_app_bar.dart';
 import 'package:mobile_final_project/features/home/presentation/widgets/logout_icon_button.dart';
@@ -21,11 +19,13 @@ class RestaurantView extends StatelessWidget {
       appBar: CustomAppBar(
         leading: LogoutIconButton(),
         title: "All restaurants",
+        isSearch: false,
       ),
       body: BlocConsumer<RestaurantCubit, RestaurantState>(
         listener: (context, state) {
           if (state is RestaurantSuccess) {
-            allRestaurants = state.restaurants;
+            allRestaurants =
+                BlocProvider.of<RestaurantCubit>(context).allRestaurants;
           }
         },
         builder: (context, state) {
