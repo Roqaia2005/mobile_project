@@ -27,16 +27,16 @@ class GridViewProducts extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         return GestureDetector(
           onTap: () async {
-            await BlocProvider.of<ProductCubit>(
-              context,
-            ).fetchRestaurantsByProductId(products[index].productId!);
-
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
                 builder: (context) => ProductsView(product: products[index]),
               ),
             );
+
+            await BlocProvider.of<ProductCubit>(
+              context,
+            ).fetchRestaurantsByProductId(products[index].productId!);
           },
           child: Container(
             decoration: BoxDecoration(
