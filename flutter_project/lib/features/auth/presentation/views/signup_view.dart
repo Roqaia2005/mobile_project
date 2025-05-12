@@ -175,6 +175,7 @@ class _SignUpViewState extends State<SignUpView> {
                   CustomButton(
                     onPressed: () async {
                       if (formKey.currentState!.validate()) {
+                        validateEmail();
                         validateConfirmPassword();
 
                         BlocProvider.of<SignupCubit>(context).signUpUser(
@@ -232,6 +233,13 @@ class _SignUpViewState extends State<SignUpView> {
   void validateConfirmPassword() {
     if (passwordController.text != confirmPasswordController.text) {
       showSnackBar(context, "passwords doesn't match");
+    }
+  }
+
+  void validateEmail() {
+    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    if (!emailRegex.hasMatch(emailController.text)) {
+      showSnackBar(context, "Please enter a valid email address");
     }
   }
 

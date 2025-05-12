@@ -29,7 +29,7 @@ class SearchView extends StatelessWidget {
         if (state is SearchLoading) {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (_) => const SearchingBody()),
+            MaterialPageRoute(builder: (_) => SearchingBody(query: query)),
           );
         } else if (state is SearchFailure) {
           Navigator.push(
