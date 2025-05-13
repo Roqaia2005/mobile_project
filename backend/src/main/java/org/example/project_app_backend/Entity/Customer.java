@@ -36,7 +36,6 @@ public class Customer {
 
     private double longitude;
 
-
     @ManyToMany
     @JoinTable(
             name = "customer_product",
@@ -45,8 +44,4 @@ public class Customer {
     )
 
     private List<Product> products;
-
-
-
-
 }
