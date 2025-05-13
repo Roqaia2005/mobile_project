@@ -9,7 +9,6 @@ org\example\project_app_backend\DataIntializer.class
 org\example\project_app_backend\Services\CustomerService.class
 org\example\project_app_backend\Repository\CustomerRepo.class
 org\example\project_app_backend\DTO\StoreDTO.class
-org\example\project_app_backend\SecurityConfig.class
 org\example\project_app_backend\Entity\Store.class
 org\example\project_app_backend\Services\StoreService.class
 org\example\project_app_backend\DTO\CustomerDTO.class

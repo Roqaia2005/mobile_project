@@ -29,7 +29,7 @@ public class CustomerService {
         customer.setName(dto.getName());
         customer.setEmail(dto.getEmail());
         customer.setPassword(passwordEncoder.encode(dto.getPassword()));
-        customer.setGender(dto.getGender());
+        customer.setGender(dto.getGender() != null ? dto.getGender() : "");
         customer.setLatitude(dto.getLatitude());
         customer.setLongitude(dto.getLongitude());
         customer.setLevel(dto.getLevel());
@@ -47,18 +47,6 @@ public class CustomerService {
             throw new RuntimeException("Invalid email or password");
         emailService.sendLoginNotification(customer.getEmail(), customer.getName());
         return customer;
-    }
-
-    public Customer register(CustomerDTO dto) {
-        Customer customer = new Customer();
-        customer.setName(dto.getName());
-        customer.setEmail(dto.getEmail());
-        customer.setPassword(passwordEncoder.encode(dto.getPassword()));
-        customer.setGender(dto.getGender());
-        customer.setLatitude(dto.getLatitude());
-        customer.setLongitude(dto.getLongitude());
-        customer.setLevel(dto.getLevel());
-        return customerRepo.save(customer);
     }
 
     public void deleteCustomer(Long id) {

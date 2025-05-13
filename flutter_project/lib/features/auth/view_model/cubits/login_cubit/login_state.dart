@@ -1,5 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-part of 'login_cubit.dart';
+import '../../../data/models/user.dart';
 
 abstract class LoginState {}
 
@@ -7,9 +6,12 @@ class LoginInitial extends LoginState {}
 
 class LoginLoading extends LoginState {}
 
-class LoginSuccess extends LoginState {}
+class LoginSuccess extends LoginState {
+  final User user;
+  LoginSuccess(this.user);
+}
 
 class LoginFailure extends LoginState {
-  String errorMessage;
-  LoginFailure({required this.errorMessage});
+  final String error;
+  LoginFailure(this.error);
 }

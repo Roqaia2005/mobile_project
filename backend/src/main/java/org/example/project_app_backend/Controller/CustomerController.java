@@ -5,6 +5,7 @@ import org.example.project_app_backend.Entity.Customer;
 import org.example.project_app_backend.Services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,15 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/customers")
+@CrossOrigin(origins = "http://localhost:51314", allowCredentials = "true")
 public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody CustomerDTO dto) {
-        customerService.register(dto);
-        return ResponseEntity.ok("Registration successful.");
+    public ResponseEntity<Customer> register(@RequestBody CustomerDTO dto) {
+        Customer customer = customerService.registerCustomer(dto);
+        return ResponseEntity.ok(customer);
     }
 
     @PostMapping("/login")

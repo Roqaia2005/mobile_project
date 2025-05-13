@@ -22,7 +22,7 @@ class _SignUpViewState extends State<SignUpView> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
-  String? level;
+  int? level;
   String? gender;
 
   GlobalKey<FormState> formKey = GlobalKey();
@@ -44,7 +44,7 @@ class _SignUpViewState extends State<SignUpView> {
           );
         } else if (state is SignupFailure) {
           isLoading = false;
-          showSnackBar(context, state.errorMessage);
+          showSnackBar(context, state.error);
         }
       },
       builder: (context, state) {
@@ -111,7 +111,7 @@ class _SignUpViewState extends State<SignUpView> {
                     isRequired: true,
                   ),
                   const SizedBox(height: 20),
-                  buildLevel(),
+                  // buildLevel(),
                   const SizedBox(height: 20),
 
                   Padding(
@@ -178,11 +178,11 @@ class _SignUpViewState extends State<SignUpView> {
                         validateEmail();
                         validateConfirmPassword();
 
-                        BlocProvider.of<SignupCubit>(context).signUpUser(
+                        BlocProvider.of<SignupCubit>(context).signup(
                           email: emailController.text,
                           password: passwordController.text,
                           name: nameController.text,
-                          level: level ?? "",
+                          level: level ?? 1,
                           gender: gender ?? "",
                         );
                       } else {
@@ -261,7 +261,7 @@ class _SignUpViewState extends State<SignUpView> {
 
         dropdownColor: const Color(0xFF9DAAE8),
 
-        value: level,
+        value: level.toString(),
         items:
             ['1', '2', '3', '4']
                 .map(
@@ -271,7 +271,11 @@ class _SignUpViewState extends State<SignUpView> {
                 .toList(),
         onChanged: (value) {
           setState(() {
-            level = value;
+            if (value != null) {
+              setState(() {
+                level = int.parse(value); 
+              });
+            }
           });
         },
       ),

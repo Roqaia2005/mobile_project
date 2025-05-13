@@ -1,10 +1,11 @@
 package org.example.project_app_backend.DTO;
-
 import lombok.Data;
-import org.example.project_app_backend.Entity.Product;
-
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Data
 public class CustomerDTO {
 
