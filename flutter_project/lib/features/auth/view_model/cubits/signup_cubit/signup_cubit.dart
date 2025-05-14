@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:mobile_final_project/features/auth/auth_service.dart';
 import 'package:mobile_final_project/features/auth/data/models/user.dart';
 
@@ -17,7 +16,7 @@ class SignupCubit extends Cubit<SignupState> {
     String? gender,
     double latitude = 0,
     double longitude = 0,
-    int level = 1,
+    int? level,
   }) async {
     emit(SignupLoading());
     try {
@@ -25,13 +24,14 @@ class SignupCubit extends Cubit<SignupState> {
         name: name,
         email: email,
         password: password,
-        gender: gender,
+        gender: gender ?? '',
         latitude: latitude,
         longitude: longitude,
         level: level,
       );
       emit(SignupSuccess(user));
     } catch (e) {
+      print('Signup error: $e');
       emit(SignupFailure(e.toString()));
     }
   }

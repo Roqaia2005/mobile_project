@@ -4,17 +4,16 @@ import 'package:mobile_final_project/features/home/data/models/restaurant.dart';
 class RestaurantService {
   Dio dio;
   RestaurantService(this.dio);
-  final String baseUrl = "http://192.168.1.19:8080";
+  final String baseUrl = "http://192.168.1.9:8081";
 
   Future<List<Restaurant>> getRestaurants() async {
     try {
       final response = await dio.get("$baseUrl/getStores");
 
       if (response.statusCode == 200) {
-        List<Restaurant> restaurants =
-            response.data
-                .map<Restaurant>((json) => Restaurant.fromJson(json))
-                .toList();
+        List<Restaurant> restaurants = response.data
+            .map<Restaurant>((json) => Restaurant.fromJson(json))
+            .toList();
 
         return restaurants;
       } else {
@@ -30,10 +29,9 @@ class RestaurantService {
       final response = await dio.get("$baseUrl/$id/getProductStores");
 
       if (response.statusCode == 200) {
-        List<Restaurant> restaurants =
-            response.data
-                .map<Restaurant>((json) => Restaurant.fromJson(json))
-                .toList();
+        List<Restaurant> restaurants = response.data
+            .map<Restaurant>((json) => Restaurant.fromJson(json))
+            .toList();
 
         return restaurants;
       } else {

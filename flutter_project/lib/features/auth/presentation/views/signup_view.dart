@@ -34,16 +34,22 @@ class _SignUpViewState extends State<SignUpView> {
     return BlocConsumer<SignupCubit, SignupState>(
       listener: (context, state) {
         if (state is SignupLoading) {
-          isLoading = true;
+          setState(() {
+            isLoading = true;
+          });
         } else if (state is SignupSuccess) {
+          setState(() {
+            isLoading = false;
+          });
           showSnackBar(context, "Sign up successfully");
-          isLoading = false;
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => LoginView()),
           );
         } else if (state is SignupFailure) {
-          isLoading = false;
+          setState(() {
+            isLoading = false;
+          });
           showSnackBar(context, state.error);
         }
       },
@@ -52,7 +58,6 @@ class _SignUpViewState extends State<SignUpView> {
           inAsyncCall: isLoading,
           child: Scaffold(
             extendBodyBehindAppBar: true,
-
             backgroundColor: AppColors.primaryColor,
             appBar: AppBar(
               backgroundColor: Colors.transparent,
@@ -62,11 +67,7 @@ class _SignUpViewState extends State<SignUpView> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return HomeView();
-                      },
-                    ),
+                    MaterialPageRoute(builder: (context) => HomeView()),
                   );
                 },
               ),
@@ -76,7 +77,6 @@ class _SignUpViewState extends State<SignUpView> {
               child: ListView(
                 children: [
                   Image(image: AssetImage(AssetsData().shop), height: 80),
-
                   const Center(
                     child: Text(
                       "Register",
@@ -94,7 +94,6 @@ class _SignUpViewState extends State<SignUpView> {
                       style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                   ),
-
                   const SizedBox(height: 10),
                   CustomTextFormField(
                     icon: Icons.person,
@@ -103,7 +102,6 @@ class _SignUpViewState extends State<SignUpView> {
                     isRequired: true,
                   ),
                   const SizedBox(height: 10),
-
                   CustomTextFormField(
                     icon: Icons.email,
                     controller: emailController,
@@ -111,9 +109,8 @@ class _SignUpViewState extends State<SignUpView> {
                     isRequired: true,
                   ),
                   const SizedBox(height: 20),
-                  // buildLevel(),
+                  buildLevel(),
                   const SizedBox(height: 20),
-
                   Padding(
                     padding: const EdgeInsets.only(left: 30),
                     child: Row(
@@ -153,7 +150,6 @@ class _SignUpViewState extends State<SignUpView> {
                     ),
                   ),
                   const SizedBox(height: 8),
-
                   CustomTextFormField(
                     icon: Icons.lock,
                     isPassword: true,
@@ -162,21 +158,21 @@ class _SignUpViewState extends State<SignUpView> {
                     isRequired: true,
                   ),
                   const SizedBox(height: 20),
-
                   CustomTextFormField(
                     isPassword: true,
                     icon: Icons.lock,
-
                     controller: confirmPasswordController,
                     hintText: "Confirm Password",
                     isRequired: true,
                   ),
                   const SizedBox(height: 20),
                   CustomButton(
-                    onPressed: () async {
+                    onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        validateEmail();
-                        validateConfirmPassword();
+                        if (!validateEmail()) return;
+                        if (!validatePassword()) return;
+
+                        if (!validateConfirmPassword()) return;
 
                         BlocProvider.of<SignupCubit>(context).signup(
                           email: emailController.text,
@@ -230,22 +226,35 @@ class _SignUpViewState extends State<SignUpView> {
     );
   }
 
-  void validateConfirmPassword() {
+  bool validateConfirmPassword() {
     if (passwordController.text != confirmPasswordController.text) {
-      showSnackBar(context, "passwords doesn't match");
+      showSnackBar(context, "Passwords don't match");
+      return false;
     }
+    return true;
   }
 
-  void validateEmail() {
-    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+  bool validatePassword() {
+    if (!RegExp(r'^.{8,}$').hasMatch(passwordController.text)) {
+      showSnackBar(context, "Password must contain at least 8 chars");
+
+      return false;
+    }
+    return true;
+  }
+
+  bool validateEmail() {
+    final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]{2,}$');
     if (!emailRegex.hasMatch(emailController.text)) {
       showSnackBar(context, "Please enter a valid email address");
+      return false;
     }
+    return true;
   }
 
   Widget buildLevel() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 50),
+      padding: const EdgeInsets.symmetric(horizontal: 50),
       child: DropdownButtonFormField<String>(
         decoration: InputDecoration(
           labelText: 'Select a level',
@@ -258,10 +267,8 @@ class _SignUpViewState extends State<SignUpView> {
             borderSide: const BorderSide(color: Color(0xFF9DAAE8)),
           ),
         ),
-
         dropdownColor: const Color(0xFF9DAAE8),
-
-        value: level.toString(),
+        value: level?.toString(),
         items:
             ['1', '2', '3', '4']
                 .map(
@@ -270,13 +277,11 @@ class _SignUpViewState extends State<SignUpView> {
                 )
                 .toList(),
         onChanged: (value) {
-          setState(() {
-            if (value != null) {
-              setState(() {
-                level = int.parse(value); 
-              });
-            }
-          });
+          if (value != null) {
+            setState(() {
+              level = int.parse(value);
+            });
+          }
         },
       ),
     );

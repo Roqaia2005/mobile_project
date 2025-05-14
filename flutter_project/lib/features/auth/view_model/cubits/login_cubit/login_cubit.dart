@@ -11,7 +11,7 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> login(String email, String password) async {
     emit(LoginLoading());
     try {
-      final user = await authService.login(email:email, password: password);
+      final user = await authService.login(email: email, password: password);
       emit(LoginSuccess(user));
     } catch (e) {
       emit(LoginFailure(e.toString()));

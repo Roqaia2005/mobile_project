@@ -32,7 +32,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       child: Stack(
         children: [
           Container(
-            height: 45,
+            height: 47,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               gradient: const LinearGradient(
@@ -48,6 +48,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             ),
           ),
           TextFormField(
+            cursorErrorColor: Colors.blue,
             controller: widget.controller,
             obscureText: obscureText,
             decoration: InputDecoration(
@@ -56,8 +57,13 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               prefixIcon: Icon(widget.icon, color: AppColors.iconColor),
               hintText: widget.hintText,
               hintStyle: const TextStyle(color: AppColors.hintColor),
+
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15),
+              ),
+              errorStyle: TextStyle(
+                color: const Color.fromARGB(255, 122, 21, 13),
+                // fontWeight: FontWeight.bold,
               ),
               suffixIcon:
                   widget.isPassword

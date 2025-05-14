@@ -4,23 +4,19 @@ import 'package:dio/dio.dart';
 import 'package:mobile_final_project/features/auth/data/models/user.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
-
 class AuthService {
-  static const String baseUrl = 'http://localhost:8081/api/customers';
-  final Dio _dio =
-      Dio(
-          BaseOptions(
-            connectTimeout: const Duration(seconds: 10),
-            receiveTimeout: const Duration(seconds: 10),
-            baseUrl: baseUrl,
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-            },
-          ),
-        );
-    
-        
+  static const String baseUrl = 'http://192.168.1.9:8081/api/customers';
+  final Dio _dio = Dio(
+    BaseOptions(
+      // connectTimeout: const Duration(seconds: 10),
+      // receiveTimeout: const Duration(seconds: 10),
+      baseUrl: baseUrl,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    ),
+  );
 
   Future<User> signup({
     required String name,
@@ -29,7 +25,7 @@ class AuthService {
     String? gender = '',
     double latitude = 0.0,
     double longitude = 0.0,
-    int ?level,
+    int? level,
   }) async {
     try {
       final response = await _dio.post(
@@ -68,10 +64,17 @@ class AuthService {
 
   Future<User> login({required String email, required String password}) async {
     try {
-      final response = await _dio.post(
-        '/login',
-        data: {'email': email, 'password': password},
-      );
+      final response = await _dio.post('/login',
+          queryParameters: {
+            'email': email,
+            'password': password,
+          },
+          options: Options(
+            headers: {
+              'Authorization':
+                  'Bearer YOUR_ACCESS_TOKEN', // Add token if required
+            },
+          ));
 
       if (response.statusCode == 200) {
         return User.fromJson(response.data);
