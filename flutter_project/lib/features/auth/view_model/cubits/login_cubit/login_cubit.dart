@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobile_final_project/features/auth/auth_service.dart';
+import 'package:mobile_final_project/features/auth/services/auth_service.dart';
 import 'package:mobile_final_project/features/auth/view_model/cubits/login_cubit/login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {

@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:mobile_final_project/features/auth/auth_service.dart';
 import 'package:mobile_final_project/features/auth/data/models/user.dart';
+import 'package:mobile_final_project/features/auth/services/auth_service.dart';
 
 part 'signup_state.dart';
 
