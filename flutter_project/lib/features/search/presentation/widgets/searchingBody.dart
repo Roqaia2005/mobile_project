@@ -34,7 +34,7 @@ class SearchingBody extends StatelessWidget {
           final filteredProducts = state.filteredProducts;
           return Scaffold(
             appBar: CustomAppBar(
-              title: 'Search for \"$query\"',
+              title: 'Search for "$query"',
               leading: BackArrowIconButton(),
               isSearch: true,
             ),

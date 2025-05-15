@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobile_final_project/core/colors.dart';
-import 'package:mobile_final_project/features/home/data/models/product.dart';
-import 'package:mobile_final_project/features/home/data/models/restaurant.dart';
 import 'package:mobile_final_project/features/home/view_model/cubits/product_cubit/product_cubit.dart';
 
 class GridViewRestaurants extends StatelessWidget {

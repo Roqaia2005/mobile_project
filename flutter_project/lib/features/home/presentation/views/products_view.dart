@@ -1,13 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_final_project/core/colors.dart';
 import 'package:mobile_final_project/core/widgets/back_arrow_icon_button.dart';
 import 'package:mobile_final_project/core/widgets/custom_app_bar.dart';
-import 'package:mobile_final_project/core/widgets/grid_view_products.dart';
 import 'package:mobile_final_project/core/widgets/grid_view_restaurants.dart';
 import 'package:mobile_final_project/features/home/data/models/product.dart';
-import 'package:mobile_final_project/features/home/view_model/cubits/product_cubit/product_cubit.dart';
 
 class ProductsView extends StatelessWidget {
   const ProductsView({super.key, required this.product});
