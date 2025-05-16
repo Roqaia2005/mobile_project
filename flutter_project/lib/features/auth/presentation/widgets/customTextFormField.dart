@@ -24,7 +24,14 @@ class CustomTextFormField extends StatefulWidget {
 }
 
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
-  bool obscureText = false;
+  late bool obscureText;
+
+  @override
+  void initState() {
+    super.initState();
+    obscureText = widget.isPassword;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -76,7 +83,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                         icon: Icon(
                           color: AppColors.iconColor,
 
-                          obscureText ? Icons.visibility_off : Icons.visibility,
+                          obscureText ? Icons.visibility : Icons.visibility_off,
                         ),
                       )
                       : null,
