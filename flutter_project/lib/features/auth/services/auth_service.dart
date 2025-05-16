@@ -5,7 +5,7 @@ import 'package:mobile_final_project/features/auth/data/models/user.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
-  static const String baseUrl = 'http://192.168.1.9:8081/api/customers';
+  static const String baseUrl = 'http://192.168.1.19:8080/api/customers';
   final Dio _dio = Dio(
     BaseOptions(
       // connectTimeout: const Duration(seconds: 10),
@@ -64,17 +64,16 @@ class AuthService {
 
   Future<User> login({required String email, required String password}) async {
     try {
-      final response = await _dio.post('/login',
-          queryParameters: {
-            'email': email,
-            'password': password,
+      final response = await _dio.post(
+        '/login',
+        queryParameters: {'email': email, 'password': password},
+        options: Options(
+          headers: {
+            'Authorization':
+                'Bearer YOUR_ACCESS_TOKEN', // Add token if required
           },
-          options: Options(
-            headers: {
-              'Authorization':
-                  'Bearer YOUR_ACCESS_TOKEN', // Add token if required
-            },
-          ));
+        ),
+      );
 
       if (response.statusCode == 200) {
         return User.fromJson(response.data);

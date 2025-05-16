@@ -7,6 +7,7 @@ import 'package:mobile_final_project/features/auth/presentation/views/signup_vie
 import 'package:mobile_final_project/features/home/data/services/restaurant_service.dart';
 import 'package:mobile_final_project/features/auth/view_model/cubits/login_cubit/login_cubit.dart';
 import 'package:mobile_final_project/features/auth/view_model/cubits/signup_cubit/signup_cubit.dart';
+import 'package:mobile_final_project/features/home/presentation/views/restuarant_view.dart';
 import 'package:mobile_final_project/features/home/view_model/cubits/product_cubit/product_cubit.dart';
 import 'package:mobile_final_project/features/search/view_model/cubits/search_cubit/search_cubit.dart';
 import 'package:mobile_final_project/features/home/view_model/cubits/restaurant_cubit/restaurant_cubit.dart';
@@ -49,8 +50,8 @@ class MyApp extends StatelessWidget {
           '/signup': (context) => SignUpView(),
           '/login': (context) => LoginView(),
           '/home': (context) => HomeView(),
+          '/store': (context) => RestaurantView(),
         },
-
       ),
     );
   }

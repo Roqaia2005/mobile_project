@@ -21,8 +21,14 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/customers/**").permitAll()
-                .anyRequest().authenticated()
+                    .requestMatchers(
+                            "/api/customers/**",
+                            "/getProducts",
+                            "/{storeId}/getStoreProducts",
+                            "/getStores",
+                            "/{productId}/getProductStores"
+                    ).permitAll()
+                    .anyRequest().authenticated()
             );
         return http.build();
     }
@@ -30,7 +36,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-//        configuration.setAllowedOrigins(List.of("http://localhost:51314", "http://localhost"));
+        configuration.setAllowedOrigins(List.of("http://localhost:51314", "http://localhost"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);

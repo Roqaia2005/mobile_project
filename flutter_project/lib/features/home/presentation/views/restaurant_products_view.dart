@@ -6,6 +6,7 @@ import 'package:mobile_final_project/core/widgets/back_arrow_icon_button.dart';
 import 'package:mobile_final_project/core/widgets/custom_app_bar.dart';
 import 'package:mobile_final_project/core/widgets/grid_view_products.dart';
 import 'package:mobile_final_project/features/home/data/models/restaurant.dart';
+import 'package:mobile_final_project/features/home/presentation/widgets/google_map_widget.dart';
 
 class RestaurantProducts extends StatelessWidget {
   const RestaurantProducts({super.key, required this.restaurant});
@@ -78,6 +79,36 @@ class RestaurantProducts extends StatelessWidget {
             const SizedBox(height: 12),
 
             GridViewProducts(products: restaurant.products!),
+
+            SizedBox(height: 16),
+
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder:
+                        (context) => GoogleMapWidget(restaurant: restaurant),
+                  ),
+                );
+              },
+              borderRadius: BorderRadius.circular(16),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.location_on, color: Colors.white),
+                  const SizedBox(width: 8),
+                  Text(
+                    'Location of ${restaurant.name} on map',
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
